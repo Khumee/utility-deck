@@ -1,0 +1,18 @@
+# Ignore environment and key files
+.env
+*.env
+*.key
+*.token
+
+# Ignore temporary audio and text/PDF output files
+*.txt
+*.pdf
+*.ogg
+*.mp3
+*.wav
+
+# Python cache and IDE files
+__pycache__/
+.vscode/
+.idea/
+.DS_Store
