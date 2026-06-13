@@ -29,4 +29,6 @@ audio-transcribe = "audio_transcriber.audio_transcriber:main"
 md-to-pdf = "md_to_pdf.md_to_pdf:main"
 extract-pdf = "extract_pdf.extract_pdf:main"
 image-to-html = "image_to_html.image_to_html:main"
+html-to-image = "html_to_image.html_to_image:main"
+
 
