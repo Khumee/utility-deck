@@ -1,19 +1,54 @@
-# Central Utility Scripts (utils)
+# Central Utility Scripts (utility-deck)
 
 A collection of general-purpose scripts for file processing, document conversion, and audio transcription.
 
-## Tools Directory
+## 🚀 Installation
 
-Here is a list of the available tools. Click on any tool name to view its specific setup instructions and usage details:
+You can install this toolkit directly from GitHub using `pip`. This will automatically install all dependencies and register the terminal CLI commands:
 
-1. **[Audio Transcriber](./audio_transcriber/)** (`audio_transcriber.py`):
-   * Transcribes `.mp3`, `.ogg`, and `.wav` audio files directly to text using Google's Gemini API (via the new `google-genai` SDK).
-   
-2. **[HTML to PDF Converter](./html_to_pdf/)** (`html_to_pdf.py`):
-   * Renders static HTML documents or entire folders of HTML files into print-ready A4 PDFs using Playwright.
-   
-3. **[Markdown to PDF Converter](./md_to_pdf/)** (`md_to_pdf.py`):
-   * Converts Markdown documents (`.md`) to standard PDFs.
-   
-4. **[Extract PDF Text](./extract_pdf/)** (`extract_pdf.py`):
-   * Utility for extracting plain text from PDF files.
+```bash
+pip install git+https://github.com/Khumee/utility-deck.git
+```
+
+*Note: For the PDF conversion tools, you will also need to install the Playwright browser dependencies:*
+```bash
+playwright install chromium
+```
+
+---
+
+## 🛠️ CLI Commands (Terminal Shortcuts)
+
+Once installed, you can run these commands directly from **any directory** in your terminal:
+
+### 1. **`audio-transcribe`**
+Transcribes audio files (like `.mp3`, `.ogg`, `.wav`) to text using Google's Gemini API:
+```bash
+# Set your API Key first (e.g. in Windows PowerShell)
+[Environment]::SetEnvironmentVariable("GEMINI_API_KEY", "your_api_key", "User")
+
+# Run transcription
+audio-transcribe --file "my_recording.ogg" --language "Urdu"
+```
+* [View setup & usage details](./audio_transcriber/)
+
+### 2. **`html-to-pdf`**
+Converts HTML pages or folders of HTML files into print-ready A4 PDFs:
+```bash
+html-to-pdf --input "document.html" --output "output.pdf"
+```
+* [View setup & usage details](./html_to_pdf/)
+
+### 3. **`md-to-pdf`**
+Converts Markdown `.md` documents directly to PDF format:
+```bash
+md-to-pdf "document.md" "output.pdf"
+```
+* [View setup & usage details](./md_to_pdf/)
+
+### 4. **`extract-pdf`**
+Extracts plain text contents from a PDF file:
+```bash
+extract-pdf "document.pdf"
+```
+* [View setup & usage details](./extract_pdf/)

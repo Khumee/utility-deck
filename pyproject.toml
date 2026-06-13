@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "utility-deck"
+version = "1.0.0"
+authors = [
+    { name = "Khurram (Khumee)" }
+]
+description = "A collection of highly optimized CLI utility scripts for Playwright HTML-to-PDF conversion, Gemini-powered Urdu audio transcription, and PDF/Markdown file handling."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "google-genai>=0.1.0",
+    "playwright>=1.30.0",
+    "markdown>=3.0",
+    "pypdf>=3.0",
+]
+
+[project.scripts]
+html-to-pdf = "html_to_pdf.html_to_pdf:main"
+audio-transcribe = "audio_transcriber.audio_transcriber:main"
+md-to-pdf = "md_to_pdf.md_to_pdf:main"
+extract-pdf = "extract_pdf.extract_pdf:main"
