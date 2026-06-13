@@ -3,14 +3,14 @@
 A collection of general-purpose scripts for file processing, document conversion, and audio transcription.
 
 ## Table of Contents
-1. [Gemini Audio Transcriber (`gemini_audio_transcriber.py`)](#1-gemini-audio-transcriber-gemini_audio_transcriberpy)
+1. [Audio Transcriber (`audio_transcriber.py`)](#1-gemini-audio-transcriber-audio_transcriberpy)
 2. [HTML to PDF Converter (`html_to_pdf.py`)](#2-html-to-pdf-converter-html_to_pdfpy)
 3. [Markdown to PDF Converter (`md_to_pdf.py`)](#3-markdown-to-pdf-converter-md_to_pdfpy)
 4. [Extract PDF Text (`extract_pdf.py`)](#4-extract-pdf-text-extract_pdfpy)
 
 ---
 
-## 1. Gemini Audio Transcriber (`gemini_audio_transcriber.py`)
+## 1. Audio Transcriber (`audio_transcriber.py`)
 Transcribes audio files (like `.mp3`, `.ogg`, `.wav`) to text using Google's Gemini API (via the new `google-genai` SDK supporting `AQ.` key formats).
 
 ### Setup:
@@ -23,7 +23,7 @@ Configure your API key in your environment variables:
 
 ### Usage:
 ```bash
-python gemini_audio_transcriber.py --file "path/to/audio.ogg" --language "Urdu"
+python audio_transcriber.py --file "path/to/audio.ogg" --language "Urdu"
 ```
 * Use `-f` or `--file` to specify the audio path.
 * Use `-o` or `--output` to customize the output text file destination.
