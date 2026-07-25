@@ -28,7 +28,7 @@ except ImportError:
         print("  playwright install chromium")
         sys.exit(1)
 
-async def render_to_pdf(page, html_path, pdf_path, wait_ms):
+async def render_to_pdf(page, html_path, pdf_path, wait_ms, pdf_width=None, pdf_height=None):
     print(f"Loading HTML: {os.path.basename(html_path)}")
     # Convert file path to local URL format
     abs_url = f"file:///{os.path.abspath(html_path).replace(os.sep, '/')}"
@@ -39,22 +39,30 @@ async def render_to_pdf(page, html_path, pdf_path, wait_ms):
         await page.wait_for_timeout(wait_ms)
         
     print(f"Rendering PDF to: {os.path.basename(pdf_path)}...")
-    await page.pdf(
-        path=pdf_path,
-        format="A4",
-        print_background=True,
-        margin={"top": "0px", "bottom": "0px", "left": "0px", "right": "0px"}
-    )
+    pdf_options = {
+        "path": pdf_path,
+        "print_background": True,
+        "margin": {"top": "0px", "bottom": "0px", "left": "0px", "right": "0px"}
+    }
+    if pdf_width and pdf_height:
+        pdf_options["width"] = pdf_width
+        pdf_options["height"] = pdf_height
+    else:
+        pdf_options["format"] = "A4"
+        
+    await page.pdf(**pdf_options)
     print("SUCCESS! PDF saved.")
     print("-" * 50)
 
 async def main():
     parser = argparse.ArgumentParser(
-        description="General-purpose HTML to A4 Print PDF Converter using Playwright."
+        description="General-purpose HTML to Print PDF Converter using Playwright."
     )
     parser.add_argument("-i", "--input", required=True, help="Input HTML file path or folder path containing HTML files.")
     parser.add_argument("-o", "--output", help="Output PDF file path (or output directory if input is a folder).")
     parser.add_argument("-w", "--wait", type=int, default=3500, help="Wait time in milliseconds for rendering (default: 3500ms).")
+    parser.add_argument("--width", help="Custom PDF width (e.g. '1000px', '24in').")
+    parser.add_argument("--height", help="Custom PDF height (e.g. '2000px', '48in').")
     
     args = parser.parse_args()
 
@@ -110,7 +118,7 @@ async def main():
 
             page = await browser.new_page()
             try:
-                await render_to_pdf(page, html_file, pdf_file, args.wait)
+                await render_to_pdf(page, html_file, pdf_file, args.wait, args.width, args.height)
             except Exception as e:
                 print(f"Error converting '{os.path.basename(html_file)}': {e}")
             finally:

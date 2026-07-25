@@ -3,6 +3,14 @@ import sys
 import asyncio
 import argparse
 
+# Reconfigure stdout/stderr to use UTF-8 for clean console output of unicode/Urdu
+if sys.stdout.encoding != 'utf-8':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 try:
     from playwright.async_api import async_playwright
 except ImportError:
