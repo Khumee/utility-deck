@@ -21,6 +21,7 @@ dependencies = [
     "playwright>=1.30.0",
     "markdown>=3.0",
     "pypdf>=3.0",
+    "edge-tts>=7.0.0",
 ]
 
 [project.scripts]
@@ -32,7 +33,10 @@ image-to-html = "image_to_html.image_to_html:main"
 html-to-image = "html_to_image.html_to_image:main"
 extract-docx = "extract_docx.extract_docx:main"
 extract-pptx = "extract_pptx.extract_pptx:main"
+html-to-video = "html_to_video.html_to_video:main"
 
-
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
 
 
